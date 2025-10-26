@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "simple-voice-chat-group-player-names",
+	"version": "${version}",
+	"name": "Simple Voice Chat Group Player Names",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/simple-voice-chat-group-player-names/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"de.greenman999.svcgroupplayernames.SimpleVoiceChatGroupPlayerNames"
+		],
+		"client": [
+			"de.greenman999.svcgroupplayernames.SimpleVoiceChatGroupPlayerNamesClient"
+		]
+	},
+	"mixins": [
+		"simple-voice-chat-group-player-names.mixins.json",
+		{
+			"config": "simple-voice-chat-group-player-names.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.17.3",
+		"minecraft": "~1.21.10",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

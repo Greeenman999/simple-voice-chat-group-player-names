@@ -3,7 +3,7 @@
 	"package": "de.greenman999.svcgroupplayernames.mixin.client",
 	"compatibilityLevel": "JAVA_21",
 	"client": [
-		"ExampleClientMixin"
+      "GroupChatManagerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

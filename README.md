@@ -2,6 +2,8 @@
 
 Simple Voice Chat Group Player Names is a Fabric mod that shows player names next to group player heads in the HUD for users of the Simple Voice Chat mod. It enhances visibility of who is in a voice group by rendering the display names beside the group icons.
 
+<img width="202" height="196" alt="icon" src="https://github.com/user-attachments/assets/b3ebbd18-3071-482e-baae-a5b107ed491a" />
+
 ## Features
 
 - Displays player names next to group player heads in the HUD

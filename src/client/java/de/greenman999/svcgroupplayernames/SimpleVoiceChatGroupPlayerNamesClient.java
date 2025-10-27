@@ -1,8 +1,5 @@
 package de.greenman999.svcgroupplayernames;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.sugar.Local;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
 import de.maxhenkel.voicechat.VoicechatClient;
 import de.maxhenkel.voicechat.voice.client.ClientVoicechat;
 import de.maxhenkel.voicechat.voice.client.GroupPlayerIconOrientation;
@@ -10,12 +7,14 @@ import de.maxhenkel.voicechat.voice.common.PlayerState;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.util.Identifier;
+
+import java.util.logging.Logger;
 
 public class SimpleVoiceChatGroupPlayerNamesClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
+        Logger.getLogger("assets/simple-voice-chat-group-player-names").info("Simple Voice Chat Group Player Names Client Initialized");
 	}
 
     public static void renderPlayerNames(DrawContext drawContext,

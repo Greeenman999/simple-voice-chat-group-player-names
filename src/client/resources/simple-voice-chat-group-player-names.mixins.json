@@ -2,16 +2,13 @@
 	"required": true,
 	"package": "de.greenman999.svcgroupplayernames.mixin.client",
 	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"GroupChatManagerMixin"
+	"client": [
+      "GroupChatManagerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
 	},
-	"overwrites": {
-		"requireAnnotations": true
-	},
     "mixinextras": {
-      "minVersion": "0.5.0"
+        "minVersion": "0.5.0"
     }
 }

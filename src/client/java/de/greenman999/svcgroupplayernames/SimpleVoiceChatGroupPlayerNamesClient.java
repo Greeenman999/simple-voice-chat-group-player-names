@@ -44,7 +44,7 @@ public class SimpleVoiceChatGroupPlayerNamesClient implements ClientModInitializ
             } else if (hudX < 0) {
                 nameOffsetX = (int) ((int) (height * scale) + (scale - 1) + 4 + (scale - 1));
             } else if (hudY < 0) {
-                nameOffsetY = (int) (y - (width * scale) + 7 + (width * scale) / 2 - (float) (7 / 2) - 1);
+                nameOffsetY = (int) (y - (width * scale) + 7 + (2 - scale) + (width * scale) / 2 - (float) (7 / 2) - 1);
                 nameOffsetX = (int) (-MinecraftClient.getInstance().textRenderer.getWidth(state.getName()) - (height * scale) - (scale - 1) - 4 - (scale - 1));
             } else {
                 nameOffsetY = (int) (y - (width * scale) - scale + (width * scale) / 2 - (float) (7 / 2) - 1);

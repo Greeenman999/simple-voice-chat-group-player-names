@@ -60,26 +60,6 @@ public class SimpleVoiceChatGroupPlayerNamesClient implements ClientModInitializ
 
 
         drawContext.drawText(MinecraftClient.getInstance().textRenderer, state.getName(), nameOffsetX, nameOffsetY, client.getTalkCache().isTalking(state.getUuid()) ? 0xFFFFFFFF : 0x7FFFFFFF, false);
-
-        /*int nameOffsetX = x + 22;
-        int nameOffsetY = y + 5;
-
-        nameOffsetY = (int) (y + ((float) height / 2) - (scale / 2));
-
-        int hudX = VoicechatClient.CLIENT_CONFIG.groupPlayerIconPosX.get();
-        int hudY = VoicechatClient.CLIENT_CONFIG.groupPlayerIconPosY.get();
-        boolean horizontal = VoicechatClient.CLIENT_CONFIG.groupPlayerIconOrientation.get().equals(GroupPlayerIconOrientation.HORIZONTAL);
-        if (horizontal) {
-            drawContext.getMatrices().rotate((float) (Math.PI / 2));
-            nameOffsetY = y - 14;
-        }
-        if (hudX < 0) {
-            nameOffsetX = -MinecraftClient.getInstance().textRenderer.getWidth(state.getName()) - (int) (width * scale) - 6;
-        }
-
-
-        drawContext.drawText(MinecraftClient.getInstance().textRenderer, state.getName(), nameOffsetX, (int) (nameOffsetY * scale), client.getTalkCache().isTalking(state.getUuid()) ? 0xFFFFFFFF : 0x7FFFFFFF, false);*/
-
         drawContext.getMatrices().popMatrix();
     }
 }

@@ -6,6 +6,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
+import de.greenman999.svcgroupplayernames.SimpleVoiceChatGroupPlayerNamesClient;
 import de.maxhenkel.voicechat.VoicechatClient;
 import de.maxhenkel.voicechat.voice.client.ClientVoicechat;
 import de.maxhenkel.voicechat.voice.client.GroupChatManager;
@@ -46,21 +47,6 @@ public class GroupChatManagerMixin {
                                           @SuppressWarnings("LocalMayBeArgsOnly") @Local ClientVoicechat client) {
         original.call(drawContext, pipeline, sprite, x, y, u, v, width, height, textureWidth, textureHeight);
 
-        drawContext.getMatrices().pushMatrix();
-        float invScale = 1.0f / scale;
-        drawContext.getMatrices().scale(invScale, invScale);
-
-        int nameOffsetX = x + 22;
-        int nameOffsetY = y + 5;
-
-        boolean horizontal = VoicechatClient.CLIENT_CONFIG.groupPlayerIconOrientation.get().equals(GroupPlayerIconOrientation.HORIZONTAL);
-        if (horizontal) {
-            drawContext.getMatrices().rotate((float) (Math.PI / 2));
-            nameOffsetY = y - 14;
-        }
-
-        drawContext.drawText(MinecraftClient.getInstance().textRenderer, state.getName(), nameOffsetX, nameOffsetY, client.getTalkCache().isTalking(state.getUuid()) ? 0xFFFFFFFF : 0x7FFFFFFF, false);
-
-        drawContext.getMatrices().popMatrix();
+        SimpleVoiceChatGroupPlayerNamesClient.renderPlayerNames(drawContext, x, y, width, height, state, scale, client);
     }
 }

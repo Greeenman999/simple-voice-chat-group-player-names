@@ -20,9 +20,8 @@ public class GroupChatManagerMixin {
 
     @Definition(id = "drawTexture", method = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/util/Identifier;IIFFIIII)V")
     @Definition(id = "GUI_TEXTURED", field = "Lnet/minecraft/client/gl/RenderPipelines;GUI_TEXTURED:Lcom/mojang/blaze3d/pipeline/RenderPipeline;")
-    @Definition(id = "body", method = "Lnet/minecraft/entity/player/SkinTextures;body()Lnet/minecraft/util/AssetInfo$TextureAsset;")
-    @Definition(id = "texturePath", method = "Lnet/minecraft/util/AssetInfo$TextureAsset;texturePath()Lnet/minecraft/util/Identifier;")
-    @Expression("?.drawTexture(GUI_TEXTURED, ?.body().texturePath(), ?, ?, ?, ?, ?, ?, ?, ?)")
+    @Definition(id = "texture", method = "Lnet/minecraft/client/util/SkinTextures;texture()Lnet/minecraft/util/Identifier;")
+    @Expression("?.drawTexture(GUI_TEXTURED, ?.texture(), ?, ?, ?, ?, ?, ?, ?, ?)")
     @WrapOperation(
             method = "renderIcons",
             at = @At(value = "MIXINEXTRAS:EXPRESSION", ordinal = 1)

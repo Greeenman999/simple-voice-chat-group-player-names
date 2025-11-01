@@ -37,7 +37,7 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "maven.modrinth:simple-voice-chat:fabric-1.21.10-2.6.6"
+    modImplementation "maven.modrinth:simple-voice-chat:fabric-1.21.8-2.6.6"
 }
 
 processResources {

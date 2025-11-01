@@ -4,6 +4,8 @@ import de.maxhenkel.voicechat.VoicechatClient;
 import de.maxhenkel.voicechat.voice.client.ClientVoicechat;
 import de.maxhenkel.voicechat.voice.client.GroupPlayerIconOrientation;
 import de.maxhenkel.voicechat.voice.common.PlayerState;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -14,7 +16,10 @@ public class SimpleVoiceChatGroupPlayerNamesClient implements ClientModInitializ
 	@Override
 	public void onInitializeClient() {
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
-        Logger.getLogger("assets/simple-voice-chat-group-player-names").info("Simple Voice Chat Group Player Names Client Initialized");
+        Logger.getLogger("svcgroupplayernames").info("Simple Voice Chat Group Player Names Client Initialized");
+
+        AutoConfig.register(ModConfig.class, Toml4jConfigSerializer::new);
+
 	}
 
     public static void renderPlayerNames(DrawContext drawContext,
@@ -57,8 +62,22 @@ public class SimpleVoiceChatGroupPlayerNamesClient implements ClientModInitializ
             }
         }
 
-
-        drawContext.drawText(MinecraftClient.getInstance().textRenderer, state.getName(), nameOffsetX, nameOffsetY, client.getTalkCache().isTalking(state.getUuid()) ? 0xFFFFFFFF : 0x7FFFFFFF, false);
+        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        int transparencyWhenTalking = whiteWithAlpha(config.transparencyWhenTalking);
+        int transparencyWhenNotTalking = whiteWithAlpha(config.transparencyWhenNotTalking);
+        if (config.onlyShowNamesWhenTalking && !client.getTalkCache().isTalking(state.getUuid())) {
+            drawContext.getMatrices().popMatrix();
+            return;
+        }
+        drawContext.drawText(MinecraftClient.getInstance().textRenderer, state.getName(), nameOffsetX, nameOffsetY, client.getTalkCache().isTalking(state.getUuid()) ? transparencyWhenTalking : transparencyWhenNotTalking, false);
         drawContext.getMatrices().popMatrix();
     }
+
+    public static int whiteWithAlpha(int percent) {
+        percent = Math.max(0, Math.min(100, percent));
+        int alpha = Math.round(percent / 100.0f * 255.0f);
+        alpha = Math.max(0, Math.min(255, alpha));
+        return ((alpha & 0xFF) << 24) | 0x00FFFFFF;
+    }
+
 }

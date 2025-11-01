@@ -15,13 +15,15 @@ Simple Voice Chat Group Player Names is a Fabric mod that shows player names nex
 - Fabric Loader (compatible version for your Minecraft instance)
 - Fabric API
 - `Simple Voice Chat` mod
+- `Cloth Config` mod
+- `Mod Menu` mod (optional for configuration GUI)
 - Java (as required by Fabric / Minecraft)
 
 ## Installation
 
 1. Install Fabric Loader and Fabric API for your Minecraft version.
 2. Place the mod JAR into the `mods` folder of your Minecraft instance.
-3. Ensure `Simple Voice Chat` is also installed.
+3. Ensure `Simple Voice Chat` and `Cloth Config` is also installed.
 4. Launch Minecraft with the Fabric profile.
 
 ## Building from source
@@ -33,8 +35,9 @@ Simple Voice Chat Group Player Names is a Fabric mod that shows player names nex
 
 ## Configuration
 
-- No additional configuration required by default.
-- If configurable options are added, they will be documented here.
+- For configuration install `Cloth Config` and `Mod Menu` mod.
+- You can access the configuration screen via the Mod Menu in-game.
+- Options include only showing names for group members who are speaking.
 
 ## License & Contributions
 
